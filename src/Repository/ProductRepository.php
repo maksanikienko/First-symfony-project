@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Pizza;
+use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Pizza>
+ * @extends ServiceEntityRepository<Product>
  *
- * @method Pizza|null find($id, $lockMode = null, $lockVersion = null)
- * @method Pizza|null findOneBy(array $criteria, array $orderBy = null)
- * @method Pizza[]    findAll()
- * @method Pizza[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PizzaRepository extends ServiceEntityRepository
+class ProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Pizza::class);
+        parent::__construct($registry, Product::class);
     }
 
-    public function save(Pizza $entity, bool $flush = false): void
+    public function save(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class PizzaRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Pizza $entity, bool $flush = false): void
+    public function remove(Product $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class PizzaRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Pizza[] Returns an array of Pizza objects
+//     * @return Product[] Returns an array of Product objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class PizzaRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Pizza
+//    public function findOneBySomeField($value): ?Product
 //    {
 //        return $this->createQueryBuilder('p')
 //            ->andWhere('p.exampleField = :val')

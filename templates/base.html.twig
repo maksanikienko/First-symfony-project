@@ -2,18 +2,70 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        <title>{% block title %}Welcome Max{% endblock %}</title>
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
-
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        <nav>
+    <div class="logo">
+    <a href="/"> <img src="lg2.svg" width="100" height="100px">
+       </a>
+      </div>    
+
+    <div class="menu">  
+    <ul> 
+        <li><a href="/stores">Магазины</a></li>
+        <li><a href="/delivery">Доставка</a></li>
+        <li><a href="/stock">Акции</a></li>
+        <li><a href="/contact">Контакты</a></li>
+
+        </ul>
+      </div>
+
+    <div class="tel">
+    <a href="tel:88004000500">8 800 4000 500</a>
+  </div>
+    </nav>
+
+    <div class="text">
+    <h2>Компания Bomba</h2>
+  <p>
+  Компания Bomba – лидер по продаже электроники и бытовой техники на молдавском рынке. Мы знаем, насколько стремительна жизнь, и как важно все успеть! Пока вы работаете и строите карьеру, воспитываете детей и воплощаете мечты в реальность, мы всегда рядом – в шаге, в клике, по звонку.
+  Уже более 20 лет, вместе с вами, мы открыли 31 магазинов в 20 городах Молдовы и сделали все для того, чтобы от желания до покупки, вам оставался всего шаг. Дома и на работе, в кафе и самолете – покупайте электронику в интернет-магазине www.bomba.md и забирайте в любом удобном магазине сети. 
+  Главное в работе сети супермаркетов Bomba – сделать процесс покупки максимально комфортным: предложить именно то, что нужно по лучшей цене, обслужить на высоком уровне, привлечь самыми выгодными программами.
+  В наших магазинах вы можете воспользоваться самыми выгодными кредитными программами, предоставленными банками-партнерами, с которыми сеть супермаркетов Bomba успешно сотрудничает долгие годы. Приятных покупок!
+    </p>
+  </div>
+  
+  <footer>
+  <div class="footer-info">
+    <a>Copyright Anikienko Maxim</a>
+    </div>
+
+    <div class="footer-connect">
+    <a>
+    <li><b>ОБРАТНАЯ СВЯЗЬ</b></li>
+      <li>Поддержка клиентов:</li>
+      <li>+(373) 69-888-444</li>
+      </a>
+    </div>
+
+    <div class="footer-schedule">
+    <li><b>График работы</b></li>
+    <li>Пн - Пт: 9:00 - 18:00 Суббота: 9:00 - 15:00</li>
+    <li>Воскр: выходной</li>
+    </div>
+
+  </footer>
+    
+
+        {% endblock %}
     </body>
 </html>

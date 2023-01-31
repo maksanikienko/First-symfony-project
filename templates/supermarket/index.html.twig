@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Supermarket index{% endblock %}
+
+{% block body %}
+    <h1>Supermarket index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>PhoneNumber</th>
+                <th>Email</th>
+                <th>OpenedAt</th>
+                <th>ClosedAt</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>IsOpened</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for supermarket in supermarkets %}
+            <tr>
+                <td>{{ supermarket.id }}</td>
+                <td>{{ supermarket.name }}</td>
+                <td>{{ supermarket.address }}</td>
+                <td>{{ supermarket.phoneNumber }}</td>
+                <td>{{ supermarket.email }}</td>
+                <td>{{ supermarket.openedAt ? supermarket.openedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ supermarket.closedAt ? supermarket.closedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ supermarket.description }}</td>
+                <td>{{ supermarket.rating }}</td>
+                <td>{{ supermarket.isOpened ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_supermarket_show', {'id': supermarket.id}) }}">show</a>
+                    <a href="{{ path('app_supermarket_edit', {'id': supermarket.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_supermarket_new') }}">Create new</a>
+{% endblock %}
