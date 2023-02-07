@@ -95,11 +95,22 @@ footer {
     list-style-type: none;
   }
 
-  .footer-schedule{
+  .footer-schedule {
     position: absolute;
     line-height: 1.5;
-    bottom: 20%;
-    right: 20%;
+    bottom: 30%;
+    left: 2%;
     list-style-type: none;
 
+  }
+  
+  .form-email {
+    position: absolute;
+    right: 20%;
+    bottom: 10%;
+    display: inline;
+  }
+
+  .table-supermarket {
+    margin: 1%;
   }

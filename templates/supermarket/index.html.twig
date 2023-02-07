@@ -5,7 +5,8 @@
 {% block body %}
     <h1>Supermarket index</h1>
 
-    <table class="table">
+    <div class="container">
+    <table class="table-supermarket">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,8 +36,8 @@
                 <td>{{ supermarket.rating }}</td>
                 <td>{{ supermarket.isOpened ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_supermarket_show', {'id': supermarket.id}) }}">show</a>
-                    <a href="{{ path('app_supermarket_edit', {'id': supermarket.id}) }}">edit</a>
+                    <a class="button" href="{{ path('app_supermarket_show', {'id': supermarket.id}) }}">show</a>
+                    <a class="button" href="{{ path('app_supermarket_edit', {'id': supermarket.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -47,5 +48,6 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_supermarket_new') }}">Create new</a>
+    <a class="button"  href="{{ path('app_supermarket_new') }}">Create new</a>
+    </div>
 {% endblock %}

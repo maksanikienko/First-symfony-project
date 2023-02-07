@@ -9,6 +9,11 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
+         {% block milligram %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+        {% endblock %}
     </head>
 
     <body>
@@ -23,8 +28,10 @@
     <ul> 
         <li><a href="/stores">Магазины</a></li>
         <li><a href="/delivery">Доставка</a></li>
-        <li><a href="/stock">Акции</a></li>
-        <li><a href="/contact">Контакты</a></li>
+        <li><a href="/product">Техника</a></li>
+        <li><a href="/order">Заказать</a></li>
+        <li><a href="/comment">Отзывы</a></li>
+
 
         </ul>
       </div>
@@ -33,8 +40,7 @@
     <a href="tel:88004000500">8 800 4000 500</a>
   </div>
     </nav>
-
-    <div class="text">
+<div class="text">
     <h2>Компания Bomba</h2>
   <p>
   Компания Bomba – лидер по продаже электроники и бытовой техники на молдавском рынке. Мы знаем, насколько стремительна жизнь, и как важно все успеть! Пока вы работаете и строите карьеру, воспитываете детей и воплощаете мечты в реальность, мы всегда рядом – в шаге, в клике, по звонку.
@@ -43,7 +49,14 @@
   В наших магазинах вы можете воспользоваться самыми выгодными кредитными программами, предоставленными банками-партнерами, с которыми сеть супермаркетов Bomba успешно сотрудничает долгие годы. Приятных покупок!
     </p>
   </div>
-  
+
+  <div class="auth">
+    <li><a href="/login"> <img src="login_icon.png" width="60" height="60px">
+       </a></li>
+       <li><b>Log in</li>
+      </div>  
+
+
   <footer>
   <div class="footer-info">
     <a>Copyright Anikienko Maxim</a>
@@ -63,9 +76,16 @@
     <li>Воскр: выходной</li>
     </div>
 
+    <div class="form-email">
+      <form>
+        <fieldset>
+          <label for="nameField">Получать спецпредложения</label>
+          <input type="text" placeholder="E-mail" id="nameField">
+          <input class="button-primary" type="submit" value="Send">
+          </fieldset>
+      </form>
+    </div>
   </footer>
-    
-
         {% endblock %}
     </body>
 </html>
