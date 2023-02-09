@@ -37,12 +37,6 @@ class Product
     #[ORM\Column]
     private ?int $number = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Microwave = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $WashingMachine = null;
-
     public function getId(): ?int
     {
         return $this->id;

@@ -1,0 +1,58 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Store{% endblock %}
+
+{% block body %}
+    <h1>Store</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ store.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ store.name }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ store.address }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ store.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ store.email }}</td>
+            </tr>
+            <tr>
+                <th>OpenedAt</th>
+                <td>{{ store.openedAt ? store.openedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ClosedAt</th>
+                <td>{{ store.closedAt ? store.closedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ store.description }}</td>
+            </tr>
+            <tr>
+                <th>Rating</th>
+                <td>{{ store.rating }}</td>
+            </tr>
+            <tr>
+                <th>IsOpened</th>
+                <td>{{ store.isOpened ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_store_index') }}">back to list</a>
+
+    <a href="{{ path('app_store_edit', {'id': store.id}) }}">edit</a>
+
+    {{ include('store/_delete_form.html.twig') }}
+{% endblock %}
