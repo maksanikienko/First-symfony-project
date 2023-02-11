@@ -11,7 +11,7 @@ class DeliveryController extends AbstractController
     #[Route('/delivery', name: 'app_delivery')]
     public function index(): Response
     {
-        return $this->render('delivery/index.html.twig', [
+        return $this->render('admin/delivery/index.html.twig', [
             'controller_name' => 'DeliveryController',
         ]);
     }

@@ -16,7 +16,7 @@ class StoreController extends AbstractController
     #[Route('/', name: 'app_store_index', methods: ['GET'])]
     public function index(StoreRepository $storeRepository): Response
     {
-        return $this->render('store/index.html.twig', [
+        return $this->render('admin/store/index.html.twig', [
             'stores' => $storeRepository->findAll(),
         ]);
     }
@@ -43,7 +43,7 @@ class StoreController extends AbstractController
     #[Route('/{id}', name: 'app_store_show', methods: ['GET'])]
     public function show(Store $store): Response
     {
-        return $this->render('store/show.html.twig', [
+        return $this->render('admin/store/show.html.twig', [
             'store' => $store,
         ]);
     }
