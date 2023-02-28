@@ -23,12 +23,15 @@ body {
 }
 
 .menu li {
-    margin: 0;
+    position: relative;
 }
 
 .menu a {
     padding: 1rem 2rem;
     display: block;
+    letter-spacing: .20em;
+    align-items: center;
+    color: rgb(255, 255, 255);
 }
 
 header {
@@ -37,19 +40,44 @@ header {
     background-color: rgb(185, 91, 91);
 }
 
-.menu a {
-    letter-spacing: .20em;
-    align-items: center;
-    /*padding-left: 50px;*/
-    /*padding-right: 50px;*/
-    color: rgb(255, 255, 255);
-
-}
-
 .menu a:hover {
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.2);
 }
+
+.dropdown:hover  .submenu {
+    display: block;
+  }
+
+  .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 10rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .submenu li {
+    position: relative;
+  }
+  
+  .submenu li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .submenu li:hover > .submenu {
+    display: block;
+    top: 0;
+    left: 100%;
+  }
 
 nav {
     display: grid;
@@ -65,8 +93,6 @@ nav {
 }
 
 footer {
-    /*bottom: 0;*/
-    /*left: 0;*/
     padding-top: 3rem;
     width: 100%;
     height: 250px;
@@ -135,3 +161,61 @@ footer {
 .main-menu a:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
+
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
+  
+  .product-item {
+    display: grid;
+    background: #f3f3f3;
+    grid-template-rows: 2fr auto auto auto;
+    grid-template-areas:
+      "image"
+      "title"
+      "price"
+      "button";
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .product-item img {
+    grid-area: image;
+    justify-self: center;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .product-item h3 {
+    grid-area: title;
+    margin: 10px;
+    font-size: 20px;
+  }
+  
+  .product-item p {
+    grid-area: price;
+    margin: 10px;
+    font-size: 16px;
+  }
+  
+  .product-item button {
+    grid-area: button;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #008CBA;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    object-fit: cover;
+  }
+  
+
+
+  
+  
+
