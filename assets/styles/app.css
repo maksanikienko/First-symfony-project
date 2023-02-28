@@ -34,50 +34,40 @@ body {
     color: rgb(255, 255, 255);
 }
 
+.menu a:hover {
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu li {
+  position: relative;
+}
+
+.dropdown-item {
+  padding: 1rem 2rem;
+  display: block;
+  letter-spacing: .20em;
+  align-items: center;
+  color: rgb(255, 255, 255);
+}
+
+.dropdown-item:hover {
+border-radius: 10px;
+background-color: rgba(255, 255, 255, 0.2);
+}
+
+.dropdown-menu {
+  display: flex;
+    width: 100%;
+    background-color: rgb(185, 91, 91);
+}
+
 header {
     display: flex;
     width: 100%;
     background-color: rgb(185, 91, 91);
 }
 
-.menu a:hover {
-    border-radius: 10px;
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.dropdown:hover  .submenu {
-    display: block;
-  }
-
-  .submenu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    min-width: 10rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .submenu li {
-    position: relative;
-  }
-  
-  .submenu li a {
-    display: block;
-    padding: 0.5rem 1rem;
-    color: #333;
-    text-decoration: none;
-  }
-  
-  .submenu li:hover > .submenu {
-    display: block;
-    top: 0;
-    left: 100%;
-  }
 
 nav {
     display: grid;
@@ -132,10 +122,6 @@ footer {
 
 .table {
     margin: 5%;
-}
-
-.auth {
-
 }
 
 .admin-page-container {
@@ -214,6 +200,10 @@ footer {
     object-fit: cover;
   }
   
+  .carousel {
+width: 300px;
+height: 300px;
+  }
 
 
   
