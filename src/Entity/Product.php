@@ -37,6 +37,9 @@ class Product
     #[ORM\Column]
     private ?int $number = null;
 
+    #[ORM\Column]
+    private bool $promoted = false;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -134,6 +137,18 @@ class Product
     public function setNumber(int $number): self
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function isPromoted(): ?bool
+    {
+        return $this->promoted;
+    }
+
+    public function setPromoted(bool $promoted): self
+    {
+        $this->promoted = $promoted;
 
         return $this;
     }

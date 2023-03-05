@@ -2,6 +2,17 @@
 {% block body %}
 <div class="container">
             <h2>Магазин бытовой техники</h2>
+
+          {% block content %}
+    <h1>Список продуктов</h1>
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
        <body>
 <div class="carousel">
           <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -57,13 +68,13 @@
     <button>Add to Cart</button>
   </div>
   <div class="product-item">
-    <img src="kot.PNG" alt="Cat Sky">
+    <img src="kot.png" alt="Cat Sky">
     <h3>Cat Sky</h3>
     <p>Free</p>
     <button>Add to Cart</button>
   </div>
   <div class="product-item">
-    <img src="microwave.png" alt="Product 3">
+    
     <h3>Product 3</h3>
     <p>$39.99</p>
     <button>Add to Cart</button>
