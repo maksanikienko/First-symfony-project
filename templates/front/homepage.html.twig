@@ -3,14 +3,7 @@
 <div class="container">
             <h2>Магазин бытовой техники</h2>
 
-          {% block content %}
-    <ul>
-        {% for product in products %}
-            <li>{{ product.name }}</li>
-        {% endfor %}
-    </ul>
-{% endblock %}
-
+{% block myCarousel %}
 
        <body>
  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -61,60 +54,37 @@
     </button>
   </div>
 
+{% endblock %}
+{% block album %}
 
-  <div class="product-grid">
-  <div class="product-item">
-    <a href="http://127.0.0.1:8000/product/">
-    <img src="fridge.png" alt="Product 1">
-    </a>
-    <h3>Холодильники</h3>
-    <p>$19.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="kot.png" alt="Cat Sky">
-    <h3>Cat Sky</h3>
-    <p>Free</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    
-    <h3>Product 3</h3>
-    <p>$39.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="washing-machine.png" alt="Product 4">
-    <h3>Product 4</h3>
-    <p>$49.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="freezer.png" alt="Product 5">
-    <h3>Product 5</h3>
-    <p>$19.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="vestel.png" alt="Product 6">
-    <h3>Product 6</h3>
-    <p>$29.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="dryer.png" alt="Product 7">
-    <h3>Product 7</h3>
-    <p>$39.99</p>
-    <button>Add to Cart</button>
-  </div>
-  <div class="product-item">
-    <img src="boiler.png" alt="Product 8">
-    <h3>Product 8</h3>
-    <p>$49.99</p>
-    <button>Add to Cart</button>
-  </div>
-</div>
+   
 
+  <div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for product in products %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" >
+            <img src="fridge.png">
+              <li>{{ product.name }}</li>
+         </svg>
+            <div class="card-body">
+              <p class="card-text">{{ product.category }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">{{ product.price }} Lei</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+{% endblock %}
 
 
    

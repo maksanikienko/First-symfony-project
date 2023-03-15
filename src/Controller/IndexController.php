@@ -14,7 +14,7 @@ class IndexController extends AbstractController
     public function index(ProductRepository $productRepository, Environment $twig): Response
     {
         return new Response($twig->render('front/homepage.html.twig', [
-            'products' => $productRepository->findAllByConditionTrue(),
+            'products' => $productRepository->findAllByPromoted(),
         ]));
       
     }

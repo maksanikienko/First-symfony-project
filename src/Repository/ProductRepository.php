@@ -43,7 +43,7 @@ class ProductRepository extends ServiceEntityRepository
     /**
  * @return Product[] Returns an array of Product objects
  */
-public function findAllByConditionTrue(): array
+public function findAllByPromoted(): array
 {
     return $this->createQueryBuilder('p')
         ->andWhere('p.promoted = :val')
