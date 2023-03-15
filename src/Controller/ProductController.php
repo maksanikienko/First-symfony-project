@@ -57,35 +57,6 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $productRepository->save($product, true);
-
-            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('admin/product/edit.html.twig', [
-            'product' => $product,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
-    public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
-            $productRepository->remove($product, true);
-        }
-
-        return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
-    }
-
-    #[Route("/image", name: "app_product_image", methods: ['GET'])]
-    public function image(Request $request) 
-    {
-        $product = new Product();
-        $form = $this->createForm(ProductType::class, $product);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
             // обработка загруженного файла
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
@@ -103,6 +74,28 @@ class ProductController extends AbstractController
 
                 $product->setImage($newFilename);
             }
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $productRepository->save($product, true);
+
+            return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('admin/product/edit.html.twig', [
+            'product' => $product,
+            'form' => $form,
+        ]);
     }
-}
+    
+
+    #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
+    public function delete(Request $request, Product $product, ProductRepository $productRepository): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$product->getId(), $request->request->get('_token'))) {
+            $productRepository->remove($product, true);
+        }
+
+        return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
+    }
 }
