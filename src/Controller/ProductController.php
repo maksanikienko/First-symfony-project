@@ -65,7 +65,7 @@ class ProductController extends AbstractController
 
                 try {
                     $imageFile->move(
-                        $this->getParameter('images_directory'),
+                        $this->getParameter('product_images_directory'),
                         $newFilename
                     );
                 } catch (FileException $e) {

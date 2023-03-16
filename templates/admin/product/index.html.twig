@@ -33,7 +33,9 @@
                 <td>{{ product.brand }}</td>
                 <td>{{ product.availability ? 'Yes' : 'No' }}</td>
                 <td>{{ product.number }}</td>
-                <td>{{ product.image }}</td>
+                <td>{% if product.getImage() %}
+                <img src="{{ product.getImage() }}" alt="{{ product.name }}">
+                {% endif %}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
                     <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>

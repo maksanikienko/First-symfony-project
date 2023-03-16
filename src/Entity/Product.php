@@ -40,8 +40,9 @@ class Product
     #[ORM\Column]
     private bool $promoted = false;
 
-    #[ORM\Column(length:255)]
+    #[ORM\Column(length:255, nullable: true)]
     private ?string $image = null;
+
 
     public function getId(): ?int
     {
@@ -158,7 +159,7 @@ class Product
     
     public function getImage(): ?string
     {
-        return $this->image;
+        return $this->image ? '/products'.$this->image : null;
     }
 
     public function setImage(string $image): self
