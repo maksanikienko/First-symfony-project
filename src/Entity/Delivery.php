@@ -24,7 +24,7 @@ class Delivery
     private ?\DateTimeInterface $delivery_date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $delivery_time = null;
+    private ?\DateTimeInterface $deliveryTime = null;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -72,12 +72,12 @@ class Delivery
 
     public function getDeliveryTime(): ?\DateTimeInterface
     {
-        return $this->delivery_time;
+        return $this->deliveryTime;
     }
 
-    public function setDeliveryTime(\DateTimeInterface $delivery_time): self
+    public function setDeliveryTime(\DateTimeInterface $deliveryTime): self
     {
-        $this->delivery_time = $delivery_time;
+        $this->deliveryTime = $deliveryTime;
 
         return $this;
     }

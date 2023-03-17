@@ -17,13 +17,13 @@ class Comment
     private ?string $content = null;
 
     #[ORM\Column]
-    private ?\DateTimeImmutable $created_at = null;
+    private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\Column]
-    private ?int $ref_id = null;
+    private ?int $refId = null;
 
     #[ORM\Column]
-    private ?int $user_id = null;
+    private ?int $userId = null;
 
     public function getId(): ?int
     {
@@ -44,36 +44,36 @@ class Comment
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {
-        return $this->created_at;
+        return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $created_at): self
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $this->created_at = $created_at;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
     public function getRefId(): ?int
     {
-        return $this->ref_id;
+        return $this->refId;
     }
 
-    public function setRefId(int $ref_id): self
+    public function setRefId(int $refId): self
     {
-        $this->ref_id = $ref_id;
+        $this->refId = $refId;
 
         return $this;
     }
 
     public function getUserId(): ?int
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUserId(int $userId): self
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
 
         return $this;
     }

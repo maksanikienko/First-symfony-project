@@ -20,6 +20,7 @@ class ProductType extends AbstractType
             ->add('brand')
             ->add('availability')
             ->add('number')
+            ->add('promoted')
         ;
     }
 

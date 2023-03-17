@@ -15,25 +15,25 @@ class Order
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $user_id = null;
+    private ?int $userId = null;
 
     #[ORM\Column(length: 255)]
     private ?string $items = null;
 
     #[ORM\Column]
-    private ?int $total_price = null;
+    private ?int $totalPrice = null;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $delivery_address = null;
+    private ?string $deliveryAddress = null;
 
     #[ORM\Column(length: 255)]
     private ?string $deliveryman = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $payment_method = null;
+    private ?string $paymentMethod = null;
 
     #[ORM\Column(length: 255)]
     private ?string $notes = null;
@@ -45,12 +45,12 @@ class Order
 
     public function getUserId(): ?int
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
-    public function setUserId(int $user_id): self
+    public function setUserId(int $userId): self
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
 
         return $this;
     }
@@ -69,12 +69,12 @@ class Order
 
     public function getTotalPrice(): ?int
     {
-        return $this->total_price;
+        return $this->totalPrice;
     }
 
-    public function setTotalPrice(int $total_price): self
+    public function setTotalPrice(int $totalPrice): self
     {
-        $this->total_price = $total_price;
+        $this->totalPrice = $totalPrice;
 
         return $this;
     }
@@ -93,12 +93,12 @@ class Order
 
     public function getDeliveryAddress(): ?string
     {
-        return $this->delivery_address;
+        return $this->deliveryAddress;
     }
 
-    public function setDeliveryAddress(string $delivery_address): self
+    public function setDeliveryAddress(string $deliveryAddress): self
     {
-        $this->delivery_address = $delivery_address;
+        $this->deliveryAddress = $deliveryAddress;
 
         return $this;
     }
@@ -117,12 +117,12 @@ class Order
 
     public function getPaymentMethod(): ?string
     {
-        return $this->payment_method;
+        return $this->paymentMethod;
     }
 
-    public function setPaymentMethod(string $payment_method): self
+    public function setPaymentMethod(string $paymentMethod): self
     {
-        $this->payment_method = $payment_method;
+        $this->paymentMethod = $paymentMethod;
 
         return $this;
     }

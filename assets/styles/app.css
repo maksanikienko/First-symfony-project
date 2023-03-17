@@ -10,20 +10,9 @@ body {
     height: 50px;
 }
 
-.menu {
-    flex-grow: 1;
-}
-
 .menu ul {
     display: flex;
-    flex-flow: row nowrap;
-    margin: 0;
-    padding: 0;
     list-style: none;
-}
-
-.menu li {
-    position: relative;
 }
 
 .menu a {
@@ -36,30 +25,7 @@ body {
 
 .menu a:hover {
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.menu li {
-  position: relative;
-}
-
-.dropdown-item {
-  padding: 1rem 2rem;
-  display: block;
-  letter-spacing: .20em;
-  align-items: center;
-  color: rgb(255, 255, 255);
-}
-
-.dropdown-item:hover {
-border-radius: 10px;
-background-color: rgba(255, 255, 255, 0.2);
-}
-
-.dropdown-menu {
-  display: flex;
-    width: 100%;
-    background-color: rgb(185, 91, 91);
+  background-color: rgba(49, 30, 30, 0.2);
 }
 
 header {
@@ -84,8 +50,6 @@ nav {
 
 footer {
     padding-top: 3rem;
-    width: 100%;
-    height: 250px;
     background-color: #D0DAEE;
 }
 
@@ -200,10 +164,10 @@ footer {
     object-fit: cover;
   }
   
-  .carousel {
-width: 300px;
-height: 300px;
-  }
+.carousel {
+  width: 100%;
+  height: 100%; 
+}
 
 
   

@@ -39,6 +39,22 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+ * @return Product[] Returns an array of Product objects
+ */
+public function findAllByConditionTrue(): array
+{
+    return $this->createQueryBuilder('p')
+        ->andWhere('p.promoted = :val')
+        ->setParameter('val', true)
+        ->orderBy('p.id', 'ASC')
+        ->getQuery()
+        ->getResult()
+    ;
+}
+
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
