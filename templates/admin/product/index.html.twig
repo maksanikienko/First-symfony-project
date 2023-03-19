@@ -34,7 +34,7 @@
                 <td>{{ product.availability ? 'Yes' : 'No' }}</td>
                 <td>{{ product.number }}</td>
                 <td>{% if product.getImage() %}
-                <img src="{{ product.getImage() }}" alt="{{ product.name }}">
+                <img src="{{ asset(imagesFolder~'/'~product.image) }}" alt="{{ product.name }}" height="100px">
                 {% endif %}</td>
                 <td>
                     <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
