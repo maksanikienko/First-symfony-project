@@ -14,8 +14,7 @@ class Order
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
-    private ?int $userId = null;
+    
 
     #[ORM\Column(length: 255)]
     private ?string $items = null;
@@ -38,21 +37,13 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $notes = null;
 
+    #[ORM\ManyToOne(inversedBy: 'orders')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $username = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->userId;
-    }
-
-    public function setUserId(int $userId): self
-    {
-        $this->userId = $userId;
-
-        return $this;
     }
 
     public function getItems(): ?string
@@ -138,4 +129,17 @@ class Order
 
         return $this;
     }
+
+    public function getUsername(): ?User
+    {
+        return $this->username;
+    }
+
+    public function setUsername(?User $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
 }
