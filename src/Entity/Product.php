@@ -16,7 +16,7 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: 'text')]
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
@@ -36,6 +36,13 @@ class Product
 
     #[ORM\Column]
     private ?int $number = null;
+
+    #[ORM\Column]
+    private bool $promoted = false;
+
+    #[ORM\Column(length:255, nullable: true)]
+    private ?string $image = null;
+
 
     public function getId(): ?int
     {
@@ -134,6 +141,30 @@ class Product
     public function setNumber(int $number): self
     {
         $this->number = $number;
+
+        return $this;
+    }
+
+    public function isPromoted(): ?bool
+    {
+        return $this->promoted;
+    }
+
+    public function setPromoted(bool $promoted): self
+    {
+        $this->promoted = $promoted;
+
+        return $this;
+    }
+    
+    public function getImage(): ?string
+    {
+        return $this->image ? '/products'.$this->image : null;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
