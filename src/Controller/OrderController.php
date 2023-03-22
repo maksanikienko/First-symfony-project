@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/order')]
 class OrderController extends AbstractController
 {
@@ -34,7 +35,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('order/new.html.twig', [
+        return $this->renderForm('admin/order/new.html.twig', [
             'order' => $order,
             'form' => $form,
         ]);
@@ -60,7 +61,7 @@ class OrderController extends AbstractController
             return $this->redirectToRoute('app_order_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('order/edit.html.twig', [
+        return $this->renderForm('admin/order/edit.html.twig', [
             'order' => $order,
             'form' => $form,
         ]);
