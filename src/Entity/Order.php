@@ -39,7 +39,7 @@ class Order
 
     #[ORM\ManyToOne(inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $username = null;
+    private ?User $user = null;
 
     public function getId(): ?int
     {
@@ -130,14 +130,14 @@ class Order
         return $this;
     }
 
-    public function getUsername(): ?User
+    public function getUser(): ?User
     {
-        return $this->username;
+        return $this->user;
     }
 
-    public function setUsername(?User $username): self
+    public function setUser(?User $user): self
     {
-        $this->username = $username;
+        $this->user = $user;
 
         return $this;
     }
