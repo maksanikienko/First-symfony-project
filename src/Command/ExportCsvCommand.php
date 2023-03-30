@@ -17,7 +17,7 @@ use App\Repository\ProductRepository;
 )]
 class ExportCsvCommand extends Command
 {
-    public function __construct(protected ProductRepository $productRepository,){
+    public function __construct(protected ProductRepository $productRepository){
         parent::__construct();
     }
 
@@ -26,13 +26,13 @@ class ExportCsvCommand extends Command
         $this
         ->setName('app:export-csv')
         ->setDescription('Exports all products to a CSV file')
-        ->addArgument('product.csv', InputArgument::REQUIRED, 'The name of the CSV file');
+        ->addArgument('filename', InputArgument::REQUIRED, 'The name of the CSV file');
         
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $filename = $input->getArgument('product.csv');
+        $filename = $input->getArgument('filename');
 
       
     
@@ -43,11 +43,11 @@ class ExportCsvCommand extends Command
         $fp = fopen($filename, 'w');
     
         // Записываем заголовок CSV
-        fputcsv($fp, ['ID', 'Name', 'Price']);
+        fputcsv($fp, ['ID', 'Name', 'Price','Description','Brand','Availabelity','Number']);
     
         // Записываем каждый объект Product в CSV
         foreach ($products as $product) {
-            fputcsv($fp, [$product->getId(), $product->getName(), $product->getPrice()]);
+            fputcsv($fp, [$product->getId(), $product->getName(), $product->getPrice(),$product->getDescription(),$product->getBrand(),$product->isAvailability(),$product->getNumber()]);
         }
     
         // Закрываем файл
