@@ -19,6 +19,7 @@ class AppFixtures extends Fixture
         $product1->setBrand('LG');
         $product1->setAvailability(true);
         $product1->setNumber(10.0);
+        $product1->setImage('air_conditioner_mitsubishi-6414602d54e00.png');
         $product1->setPromoted(true);
 
         $user1 = new User();
@@ -52,6 +53,7 @@ class AppFixtures extends Fixture
         $product2->setBrand('LG');
         $product2->setAvailability(true);
         $product2->setNumber(10.0);
+        $product2->setImage('coffee_machine_breville-641461772be60.png');
         $product2->setPromoted(true);
         
         $manager->persist($product2);

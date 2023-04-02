@@ -66,9 +66,10 @@
       {% for product in products %}
         <div class="col">
           <div class="card shadow-sm">
-            
-            <img src={{ asset(imagesFolder~'/'~product.image) }} height="200px" width="200px" style="display:block; margin: 0 auto;">
-              <li>{{ product.name }}</li>
+            <a href="{{ path('app_product_show', {'id': product.id}) }}">
+            <img src={{ asset(imagesFolder~product.image) }} height="200px" width="200px" style="display:block; margin: 0 auto;">
+              <li style="list-style: none;padding-left: 20px;">{{ product.name }}</li>
+              </a>
          
             <div class="card-body">
               <p class="card-text">{{ product.category.name ?? null }}</p>
