@@ -21,6 +21,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "milligram": "^1.4.1"
+        "milligram": "^1.4.1",
+        "sass": "^1.60.0"
     }
 }

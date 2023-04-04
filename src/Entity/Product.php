@@ -9,8 +9,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\GeneratedValue(strategy:'SEQUENCE')]
+    #[ORM\Column(type:'integer')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -22,7 +22,7 @@ class Product
     #[ORM\Column]
     private ?int $price = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length:255, nullable: true)]
     private ?int $rating = null;
 
     #[ORM\Column(length: 255)]
@@ -34,7 +34,7 @@ class Product
     #[ORM\Column]
     private ?int $number = null;
 
-    #[ORM\Column]
+    #[ORM\Column(length:255, nullable: true)]
     private bool $promoted = false;
 
     #[ORM\Column(length:255, nullable: true)]
@@ -45,7 +45,12 @@ class Product
     private ?Category $category = null;
 
 
+    public function setId(string $id): self
+    {
+        $this->id = $id;
 
+        return $this;
+    }
     public function getId(): ?int
     {
         return $this->id;
