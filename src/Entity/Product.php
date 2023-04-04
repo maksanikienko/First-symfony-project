@@ -11,7 +11,6 @@ class Product
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy:'SEQUENCE')]
     #[ORM\Column(type:'integer')]
-    #[ORM\SequenceGenerator(sequenceName:'my_sequence')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
