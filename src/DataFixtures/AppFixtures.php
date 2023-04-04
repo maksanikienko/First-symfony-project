@@ -6,9 +6,14 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Product;
 use App\Entity\User;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    public function __construct(protected UserPasswordHasherInterface $hasher)
+    {
+    }
+
     public function load(ObjectManager $manager): void
     {
         $product1 = new Product();
@@ -25,21 +30,21 @@ class AppFixtures extends Fixture
         $user1 = new User();
         $user1->setEmail('maksanikienko30@gmail.com');
         $user1->setRoles(['ROLE_ADMIN']);
-        $user1->setPassword('123');
+        $user1->setPassword($this->hasher->hashPassword($user1, '123'));
 
         $manager->persist($user1);
 
         $user2 = new User();
         $user2->setEmail('maks@gmail.com');
         $user2->setRoles(['ROLE_USER']);
-        $user2->setPassword('456');
+        $user2->setPassword($this->hasher->hashPassword($user2, '456'));
 
         $manager->persist($user2);
 
         $user3 = new User();
         $user3->setEmail('max@gmail.com');
         $user3->setRoles(['ROLE_USER','ROLE_USER']);
-        $user3->setPassword('789');
+        $user3->setPassword($this->hasher->hashPassword($user3, '789'));
 
         $manager->persist($user3);
         
