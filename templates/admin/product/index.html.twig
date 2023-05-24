@@ -1,10 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}Товары{% endblock %}
 
 {% block body %}
-    <h1>Product index</h1>
+    <h1>Товары</h1>
 
+    <div class="container">
+        <div class="d-flex row ">
+{% for product in products %}
+<div class="col-sm-6 col-md-4 col-lg-3">
+    <div class="card" style="width: 18rem;">
+        <img src="{{ asset(imagesFolder~'/'~product.image) }}" alt="{{ product.name }}" >
+        <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <form action="{{ path('app_cart') }}" method="post"class="d-flex justify-content-between">
+                    <input type="hidden" name="_token" value="{{ csrf_token('app_cart') }}">
+                    <input type="hidden" name="id" value="{{ product.id }}">
+                    <button type="submit"class="btn btn-primary">Add to cart</button>
+                    <p class="text-muted text-end">{{ product.price }} Lei</p>
+                    </form>
+            
+        </div>
+    </div>
+
+    <td>
+    <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-outline-primary">Show</a>
+    <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-outline-primary">Edit</a>
+    </td>
+
+</div>
+{% endfor %}
+    </div>
+        </div>
+        
+
+
+
+
+{#
     <table class="table">
         <thead>
             <tr>
@@ -48,6 +82,7 @@
         {% endfor %}
         </tbody>
     </table>
+    #}
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
+    <a href="{{ path('app_product_new') }}" class="btn btn-outline-primary">Create new</a>
 {% endblock %}

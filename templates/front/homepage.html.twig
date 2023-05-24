@@ -1,64 +1,52 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 <div class="container">
-            <h2>Магазин бытовой техники</h2>
+            <figure class="text-center"><h2>Магазин бытовой техники</h2></figure>
 
 {% block myCarousel %}
 
        <body>
- <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="active" aria-current="true"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Example headline.</h1>
-            <p>Some representative placeholder content for the first slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-        <div class="container">
-          <div class="carousel-caption">
-            <h1>Another example headline.</h1>
-            <p>Some representative placeholder content for the second slide of the carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Learn more</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-item active">
-        <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"></rect></svg>
-        <div class="container">
-          <div class="carousel-caption text-end">
-            <h1>One more for good measure.</h1>
-            <p>Some representative placeholder content for the third slide of this carousel.</p>
-            <p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner ">
 
+    <div class="carousel-item active">
+      <div class="d-flex align-items-center justify-content-center ">
+      <img src="/images/air_conditioner_mitsubishi-6414602d54e00.png" class="d-block w-50  " alt="pic">
+    </div>
+      </div>
+
+    <div class="carousel-item">
+      <div class="d-flex align-items-center justify-content-center ">
+      <img src="/images/coffee_machine_breville-641461772be60.png" class="d-block w-50" alt="pic">
+    </div>
+      </div>
+
+    <div class="carousel-item">
+      <div class="d-flex align-items-center justify-content-center ">
+      <img src="/images/panasonic_microwave-6414630f1f387.png" class="d-block w-50" alt="pic">
+    </div>
+      </div>
+
+  </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Предыдущий</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"  data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Следующий</span>
+  </button>
+</div>
+
+
+
+ 
 {% endblock %}
 {% block album %}
 
    
-
+<figure class="text-center"><h3>Товары на скидках</h3></figure>
   <div class="album py-5 bg-light">
     <div class="container">
 
@@ -66,7 +54,7 @@
       {% for product in products %}
         <div class="col">
           <div class="card shadow-sm">
-            <a href="{{ path('app_product_show', {'id': product.id}) }}">
+            <a href="{{ path('app_product_show', {'id': product.id}) }}" class="text-dark">
             <img src={{ asset(imagesFolder~product.image) }} height="200px" width="200px" style="display:block; margin: 0 auto;">
               <li style="list-style: none;padding-left: 20px;">{{ product.name }}</li>
               </a>
@@ -75,8 +63,17 @@
               <p class="card-text">{{ product.category.name ?? null }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+
+                <a href="{{ path('app_product_show', {'id': product.id}) }}">
+                  <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
+                   </a>
+                  
+                    <form action="{{ path('app_cart') }}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token('app_cart') }}">
+                    <input type="hidden" name="id" value="{{ product.id }}">
+                    <button type="submit">Add to cart</button>
+                    </form>
+ 
                 </div>
                 <small class="text-muted">{{ product.price }} Lei</small>
               </div>

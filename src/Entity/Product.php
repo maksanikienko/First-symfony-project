@@ -31,7 +31,7 @@ class Product
     #[ORM\Column]
     private ?bool $availability = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $number = null;
 
     #[ORM\Column(length:255, nullable: true)]

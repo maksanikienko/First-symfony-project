@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+
+   <form action="{{ path('app_register_post') }}" method="POST">
+  
+   
+  {{ form(registrationForm) }}
+  <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+</form>
+
+
+{% endblock %}

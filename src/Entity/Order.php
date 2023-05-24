@@ -16,8 +16,8 @@ class Order
 
     
 
-    #[ORM\Column(length: 255)]
-    private ?string $items = null;
+    #[ORM\Column(type:'json', nullable:true)]
+    private ?array $items = null;
 
     #[ORM\Column]
     private ?int $totalPrice = null;
@@ -29,9 +29,6 @@ class Order
     private ?string $deliveryAddress = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $deliveryman = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $paymentMethod = null;
 
     #[ORM\Column(length: 255)]
@@ -41,22 +38,44 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $customerName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $customerEmail = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $customerPhone = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getItems(): ?string
+    public function getItems(): ?array
     {
         return $this->items;
     }
 
-    public function setItems(string $items): self
+    public function setItems(array $items): self
     {
         $this->items = $items;
 
         return $this;
     }
+   
+   public function calculateTotalPrice(): float
+   {
+       $totalPrice = 0;
+
+       foreach ($this->getItems() as $orderItem) {
+           $product = $orderItem->getProduct();
+           $quantity = $orderItem->getQuantity();
+           $totalPrice += $product->getPrice() * $quantity;
+       }
+
+       return $totalPrice;
+   }
 
     public function getTotalPrice(): ?int
     {
@@ -94,18 +113,6 @@ class Order
         return $this;
     }
 
-    public function getDeliveryman(): ?string
-    {
-        return $this->deliveryman;
-    }
-
-    public function setDeliveryman(string $deliveryman): self
-    {
-        $this->deliveryman = $deliveryman;
-
-        return $this;
-    }
-
     public function getPaymentMethod(): ?string
     {
         return $this->paymentMethod;
@@ -138,6 +145,42 @@ class Order
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getCustomerName(): ?string
+    {
+        return $this->customerName;
+    }
+
+    public function setCustomerName(string $customerName): self
+    {
+        $this->customerName = $customerName;
+
+        return $this;
+    }
+
+    public function getCustomerEmail(): ?string
+    {
+        return $this->customerEmail;
+    }
+
+    public function setCustomerEmail(string $customerEmail): self
+    {
+        $this->customerEmail = $customerEmail;
+
+        return $this;
+    }
+
+    public function getCustomerPhone(): ?string
+    {
+        return $this->customerPhone;
+    }
+
+    public function setCustomerPhone(string $customerPhone): self
+    {
+        $this->customerPhone = $customerPhone;
 
         return $this;
     }

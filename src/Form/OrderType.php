@@ -22,7 +22,6 @@ class OrderType extends AbstractType
             ->add('total_price')
             ->add('status')
             ->add('delivery_address')
-            ->add('deliveryman')
             ->add('payment_method')
             ->add('notes')
         ;

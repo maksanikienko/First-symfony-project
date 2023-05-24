@@ -1,95 +1,81 @@
-{#
-<div class="container">
-    <nav>
-        <div class="logo">
-            <a href="/"> <img src="/lg2.svg" width="100px" height="100px">
-            </a>
-        </div>
 
-        <div class="menu">
-            <ul>
-                <li><a href="/store">Магазины</a></li>
-                <li><a href="/delivery">Доставка</a></li>
-                
-                <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Выпадающий список
-          </a>
-          <ul class="dropdown-menu position-static d-grid gap-1 p-2 rounded-3 mx-0 shadow w-220px">
-    <li><a class="dropdown-item rounded-2 active" href="#">Action</a></li>
-    <li><a class="dropdown-item rounded-2" href="#">Another action</a></li>
-    <li><a class="dropdown-item rounded-2" href="#">Something else here</a></li>
-    <li><hr class="dropdown-divider"></li>
-    <li><a class="dropdown-item rounded-2" href="#">Separated link</a></li>
-  </ul>
-        </li>
-                
-                    
-                <li><a href="/order">Заказать</a></li>
-                <li><a href="/comment">Отзывы</a></li>
-            </ul>
-        </div>
-        <div class="auth">
-            <a href="/login"> <img src="/login_icon.png" width="40px" height="40px" /> Login</a>
-        </div>
-    </nav>
 
- 
-</div>
-#}
+{# templates/login.html.twig #}
 
-<header class="p-3 mb-3 border-bottom">
-    <div class="container">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
+{% block body %}
+<body>
+<header class="p-3 mb-3  d-flex align-items-center justify-content-center ">
+<nav class="navbar navbar-expand-lg ">
 
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-                <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-                <li>
-                    <div class="dropdown">
-                        <a class="nav-link px-2 link-dark dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Dropdown button
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>{# toggler button for mobile #}
 
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="dropdown text-end">
-                {% if (app.user is null) %}
-                    <a class="nav-link px-2 link-dark" href="{{ path('app_login') }}">Login</a>
-                {% else %}
-                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                    </a>
-                    <ul class="dropdown-menu text-small">
-                        <li><a class="dropdown-item" href="{{ path('app_product_index') }}">Products</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{{ path('app_logout') }}">Sign out</a></li>
-                    </ul>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+    <button class="btn-light ">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Главная</a>
+      </li>
+      </button>
+      <button class="btn-light ">
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/product">Товары</a>
+      </li>
+      </button>
+      <button class="btn-light ">
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/cart/show">Корзина</a>
+      </li>
+      </button>
+      <button class="btn-light ">
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Контакты</a>
+      </li>
+      </button>
+    </ul>
+  </div>
+</nav>
 </header>
 
+ 
+     <div class="p-3 mb-3 d-flex  align-items-center justify-content-end">
+ 
+  <button class="btn rounded-pill bg-light">
+  <a class="btn" href="/login" >Войти</a>
+  </button>
+</div>
+
+{% endblock %}
 
 
+{#
+   <header class="p-3 mb-3  d-flex align-items-center ">
+        <nav class="navbar navbar-expand-lg  ">
+            <div class="collapse navbar-collapse " id="navbarNav">
+                <ul class="navbar-nav ml-auto ">
+                <button class="btn-light "
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Главная</a>
+                    </li>
+                     </button>
+                     <button class="btn-light">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/product">Товары</a>
+                    </li>
+                     </button>
+                     <button class="btn-light">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/cart/show">Корзина</a>
+                    </li>
+                     </button>
+                     <button class="btn-light">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Контакты</a>
+                    </li>
+                     </button>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    #}
