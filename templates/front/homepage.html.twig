@@ -1,92 +1,78 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-<div class="container">
-            <figure class="text-center"><h2>Магазин бытовой техники</h2></figure>
+    <figure class="text-center"><h2>Магазин бытовой техники</h2></figure>
+    {% block myCarousel %}
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner ">
 
-{% block myCarousel %}
-
-       <body>
-       <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner ">
-
-    <div class="carousel-item active">
-      <div class="d-flex align-items-center justify-content-center ">
-      <img src="/images/air_conditioner_mitsubishi-6414602d54e00.png" class="d-block w-50  " alt="pic">
-    </div>
-      </div>
-
-    <div class="carousel-item">
-      <div class="d-flex align-items-center justify-content-center ">
-      <img src="/images/coffee_machine_breville-641461772be60.png" class="d-block w-50" alt="pic">
-    </div>
-      </div>
-
-    <div class="carousel-item">
-      <div class="d-flex align-items-center justify-content-center ">
-      <img src="/images/panasonic_microwave-6414630f1f387.png" class="d-block w-50" alt="pic">
-    </div>
-      </div>
-
-  </div>
-  
-  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel"  data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Предыдущий</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel"  data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Следующий</span>
-  </button>
-</div>
-
-
-
- 
-{% endblock %}
-{% block album %}
-
-   
-<figure class="text-center"><h3>Товары на скидках</h3></figure>
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      {% for product in products %}
-        <div class="col">
-          <div class="card shadow-sm">
-            <a href="{{ path('app_product_show', {'id': product.id}) }}" class="text-dark">
-            <img src={{ asset(imagesFolder~product.image) }} height="200px" width="200px" style="display:block; margin: 0 auto;">
-              <li style="list-style: none;padding-left: 20px;">{{ product.name }}</li>
-              </a>
-         
-            <div class="card-body">
-              <p class="card-text">{{ product.category.name ?? null }}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-
-                <a href="{{ path('app_product_show', {'id': product.id}) }}">
-                  <button type="submit" class="btn btn-sm btn-outline-secondary">View</button>
-                   </a>
-                  
-                    <form action="{{ path('app_cart') }}" method="post">
-                    <input type="hidden" name="_token" value="{{ csrf_token('app_cart') }}">
-                    <input type="hidden" name="id" value="{{ product.id }}">
-                    <button type="submit">Add to cart</button>
-                    </form>
- 
+                <div class="carousel-item active">
+                    <div class="d-flex align-items-center justify-content-center ">
+                        <img src="/images/air_conditioner_mitsubishi-6414602d54e00.png" class="d-block w-50  "
+                             alt="pic">
+                    </div>
                 </div>
-                <small class="text-muted">{{ product.price }} Lei</small>
-              </div>
+
+                <div class="carousel-item">
+                    <div class="d-flex align-items-center justify-content-center ">
+                        <img src="/images/coffee_machine_breville-641461772be60.png" class="d-block w-50" alt="pic">
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="d-flex align-items-center justify-content-center ">
+                        <img src="/images/panasonic_microwave-6414630f1f387.png" class="d-block w-50" alt="pic">
+                    </div>
+                </div>
+
             </div>
-          </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Предыдущий</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Следующий</span>
+            </button>
         </div>
-        {% endfor %}
-        
-{% endblock %}
+    {% endblock %}
+    {% block album %}
+        <figure class="text-center"><h3>Товары на скидках</h3></figure>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    {% for product in products %}
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="text-dark">
+                                    <img src="{{ asset(imagesFolder~product.image) }}" height="200px" width="200px"
+                                         style="display:block; margin: 0 auto;">
+                                </a>
+                                <div class="ps-2 pe-2">
+                                    <span>{{ product.name }}</span><br>
+                                    <small class="text-muted">{{ product.price }} Lei</small>
+                                </div>
 
-
-   
-</div>
-
-       </body>
+                                <div class="card-body">
+                                    <p class="card-text float-left">{{ product.category.name ?? null }}</p>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a href="{{ path('app_product_show', {'id': product.id}) }}"
+                                           class="btn btn-outline-secondary me-3">
+                                            View
+                                        </a>
+                                        <form action="{{ path('app_cart') }}" method="post">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('app_cart') }}">
+                                            <input type="hidden" name="id" value="{{ product.id }}">
+                                            <button class="btn btn-outline-primary" type="submit">Add to cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{# тут были тэги, которые были неправильно расположены. Тэги открытые внутри блока или другого тэга должны быть там же и закрыты. #}
 {% endblock %}

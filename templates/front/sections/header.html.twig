@@ -1,81 +1,74 @@
-
-
-{# templates/login.html.twig #}
-
 {% block body %}
-<body>
-<header class="p-3 mb-3  d-flex align-items-center justify-content-center ">
-<nav class="navbar navbar-expand-lg ">
+    <div class="row">
+        <nav class="navbar navbar-expand-lg ">
+            <div class="col-8">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>{# toggler button for mobile #}
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>{# toggler button for mobile #}
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            {# ссылки как и кнопки нажимаемы, но они имеют разное назначение. Кнопки используются только в формах, ссылки используются в случаях когда ты хочешь куда-то отправить. Иногда это не важно, но это уже о JS функциях.#}
+                            <a class="nav-link" href="/">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/product">Товары</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/cart/show">Корзина</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/contact">Контакты</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="d-flex align-items-center justify-content-end">
 
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
-    <button class="btn-light ">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Главная</a>
-      </li>
-      </button>
-      <button class="btn-light ">
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/product">Товары</a>
-      </li>
-      </button>
-      <button class="btn-light ">
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/cart/show">Корзина</a>
-      </li>
-      </button>
-      <button class="btn-light ">
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Контакты</a>
-      </li>
-      </button>
-    </ul>
-  </div>
-</nav>
-</header>
-
- 
-     <div class="p-3 mb-3 d-flex  align-items-center justify-content-end">
- 
-  <button class="btn rounded-pill bg-light">
-  <a class="btn" href="/login" >Войти</a>
-  </button>
-</div>
-
+                    {# app.user в себе хранить обьект текущего пользователя (User) или null, поэтому нужна проверка #}
+                    {% if app.user %}
+                        <div class="text-light me-3">Вы вошли как <b>{{ app.user.email }}</b></div>
+                        <a class="btn rounded-pill bg-light text-black" href="{{ path('app_logout') }}">Выйти</a>
+                    {% else %}
+                        <a class="btn rounded-pill bg-light text-black" href="{{ path('app_login') }}">Войти</a>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
 {% endblock %}
 
 
 {#
-   <header class="p-3 mb-3  d-flex align-items-center ">
-        <nav class="navbar navbar-expand-lg  ">
-            <div class="collapse navbar-collapse " id="navbarNav">
-                <ul class="navbar-nav ml-auto ">
-                <button class="btn-light "
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">Главная</a>
-                    </li>
-                     </button>
-                     <button class="btn-light">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/product">Товары</a>
-                    </li>
-                     </button>
-                     <button class="btn-light">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/cart/show">Корзина</a>
-                    </li>
-                     </button>
-                     <button class="btn-light">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact">Контакты</a>
-                    </li>
-                     </button>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    #}
+<header class="p-3 mb-3  d-flex align-items-center ">
+     <nav class="navbar navbar-expand-lg  ">
+         <div class="collapse navbar-collapse " id="navbarNav">
+             <ul class="navbar-nav ml-auto ">
+             <button class="btn-light "
+                 <li class="nav-item">
+                     <a class="nav-link" href="/">Главная</a>
+                 </li>
+                  </button>
+                  <button class="btn-light">
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/product">Товары</a>
+                 </li>
+                  </button>
+                  <button class="btn-light">
+                 <li class="nav-item">
+                     <a class="nav-link" href="/admin/cart/show">Корзина</a>
+                 </li>
+                  </button>
+                  <button class="btn-light">
+                 <li class="nav-item">
+                     <a class="nav-link" href="/contact">Контакты</a>
+                 </li>
+                  </button>
+             </ul>
+         </div>
+     </nav>
+ </header>
+#}

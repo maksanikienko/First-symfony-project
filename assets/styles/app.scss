@@ -1,26 +1,11 @@
-
-
-header {
-    display: flex;
-    width: 100%;
-    background-color: rgb(185, 91, 91);
+header,footer{
+  a,span{
+    color: whitesmoke !important;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
 }
-
-
-
-footer {
-    padding-top: 3rem;
-    background-color: #D0DAEE;
-}
-
-.carousel-inner {
-  
-}
-
-
-
-
-
 
 /*
 .admin-page-container {
