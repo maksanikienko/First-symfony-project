@@ -1,5 +1,5 @@
 <?php
-/*
+/* не комментируй классы, иначе у тебя перестанет работать контейнер в местах вызова этого класса. */
 namespace App\Security;
 
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,7 +40,6 @@ class EmailVerifier
     /**
      * @throws VerifyEmailExceptionInterface
      */
-    /*
     public function handleEmailConfirmation(Request $request, UserInterface $user): void
     {
         $this->verifyEmailHelper->validateEmailConfirmation($request->getUri(), $user->getId(), $user->getEmail());
@@ -50,4 +49,4 @@ class EmailVerifier
         $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
-}*/
+}
