@@ -59,11 +59,7 @@ class CheckoutController extends AbstractController
             $order->setCustomerPhone($formData['phone']);
             $order->setUser($security->getUser());
             $order->setItems($cart);
-            /*$total = 0; 
-
-                foreach ($cart as $item) {
-                $total += $item['price'] * $item['quantity']; 
-                    }*/
+            
             $order->setTotalPrice($order->calculateTotalPrice($cart));
             $order->setStatus($formData['status']);
             $order->setDeliveryAddress($formData['address']);

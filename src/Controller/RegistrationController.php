@@ -28,7 +28,7 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
 */
-    #[Route('/register_post', name: 'app_register_post')]
+    #[Route('/register', name: 'app_register')]
     public function register(
         Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
     {
         $user = new User();
         /* делаем только обычных пользователей */
-        $user->setRoles(['ROLE_USER']);
+        $user->setRoles(['ROLE_ADMIN']);
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 

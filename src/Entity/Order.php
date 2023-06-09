@@ -20,7 +20,7 @@ class Order
     private ?array $items = null;
 
     #[ORM\Column]
-    private ?int $totalPrice = null;
+    private ?float $totalPrice = null;
 
     #[ORM\Column(length: 255)]
     private ?string $status = null;
@@ -69,20 +69,19 @@ class Order
        $totalPrice = 0;
 
        foreach ($this->getItems() as $orderItem) {
-           $product = $orderItem->getProduct();
-           $quantity = $orderItem->getQuantity();
-           $totalPrice += $product->getPrice() * $quantity;
+           $totalPrice = $totalPrice + $orderItem['price'];
+        }
+        return $totalPrice;
        }
 
-       return $totalPrice;
-   }
+       
 
-    public function getTotalPrice(): ?int
+    public function getTotalPrice(): ?float
     {
         return $this->totalPrice;
     }
 
-    public function setTotalPrice(int $totalPrice): self
+    public function setTotalPrice(float $totalPrice): self
     {
         $this->totalPrice = $totalPrice;
 
