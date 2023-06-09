@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cart{% endblock %}
+
+{% block body %}
+    <h1>Cart</h1>
+<div class="container">
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Number</th>
+            </tr>
+        </thead>
+        </div>
+        <tbody>
+            {% for item in products %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.product.number }}</td>
+                    
+                    <td><a href="{{ path('app_cart_remove', {'productId': item.product.id}) }}" class="btn btn-danger">Remove</a></td>
+                   
+                </tr>
+                {% endfor %}
+                <td><a href="{{ path('app_checkout') }}" class="btn btn-outline-primary">Checkout Order</a></td>
+        </tbody>
+    </table>
+
+    
+{% endblock %}

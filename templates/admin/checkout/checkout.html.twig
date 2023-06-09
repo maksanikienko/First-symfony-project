@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block body %}
+    <h1>Checkout</h1>
+
+    {% if cart|length > 0 %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in cart %}
+                    <tr >
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.quantity }}</td>
+                        <td>{{ product.price }} $ </td>
+                        <td>
+                            <form action="{{ path('app_cart_remove', {'productId': product.id}) }}" method="post">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                        <tfoot>
+                            <tr>
+                            <td colspan="3">Total Price:</td>
+                            <td></td>
+                            </tr>
+                        </tfoot>
+
+                        {% endfor %}
+                    </tr>
+            </tbody>
+        </table>
+         </div>
+
+
+  <div class="form-group">
+        {{ form_start(form) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}   
+        {{ form_label(form.email) }}
+        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }} 
+        {{ form_label(form.phone) }}
+        {{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }} 
+        {{ form_label(form.address) }}
+        {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }} 
+        {{ form_label(form.status) }}
+        {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }} 
+        {{ form_label(form.paymentMethod) }}
+        {{ form_widget(form.paymentMethod, {'attr': {'class': 'form-control'}}) }} 
+        {{ form_label(form.notes) }}
+        {{ form_widget(form.notes, {'attr': {'class': 'form-control'}}) }} 
+        <button type="submit" class="btn btn-outline-primary">Pay</button>
+        {{ form_end(form) }}
+       </div>
+    {% else %}
+        <p>Корзина пуста.</p>
+    {% endif %}
+{% endblock %}

@@ -1,55 +1,63 @@
-<footer>
-    <div class="container">
-  <footer class="py-5">
-    <div class="row">
-      <div class="col-6 col-md-2 mb-3">
+<div class="row">
+    <div class="col-6 col-md-2 mb-3">
         <h5>Section</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Home</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Features</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Pricing</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">FAQs</a></li>
+            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">About</a></li>
         </ul>
-      </div>
+    </div>
 
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Feedback</h5>
+    <div class="col-6 col-md-2 mb-3">
+        <h5>Обратная Связь</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a class="nav-link p-0 text-muted">Support</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">+(373) 69-888-444</a></li>
+            {# нет смысла заворачивать обычный текст в ссылки (тэг <a/> )#}
+            <li class="nav-item mb-2">Тех.Поддержка</li>
+            <li class="nav-item mb-2"><a href="#">+(373) 79-300-914</a></li>
         </ul>
-      </div>
+    </div>
 
-      <div class="col-6 col-md-2 mb-3">
-        <h5>Scheldure</h5>
+    <div class="col-6 col-md-2 mb-3">
+        <h5>График Работы</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a  class="nav-link p-0 text-muted">Mo - Fr: 9:00 - 18:00 Sat: 9:00 - 15:00 </a></li>
-          <li class="nav-item mb-2"><a  class="nav-link p-0 text-muted">Sun: day off</a></li>
+            <li class="nav-item mb-2">Mo - Fr: 9:00 - 18:00 Sat: 9:00 - 15:00</li>
+            <li class="nav-item mb-2">Sun: day off</li>
         </ul>
-      </div>
+    </div>
 
-      <div class="col-md-5 offset-md-1 mb-3">
+    <div class="col-md-5 offset-md-1 mb-3">
         <form>
-          <h5>Subscribe to our newsletter</h5>
-          <p>Monthly digest of what's new and exciting from us.</p>
-          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-            <label for="newsletter1" class="visually-hidden">Email address</label>
-            <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-            <button class="btn btn-primary" type="button">Subscribe</button>
-          </div>
+            <h5>Подписывайтесь на нашу новостную рассылку</h5>
+            <p>Ежемесячный дайджест всего нового и интересного от нас.</p>
+            <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                <label for="newsletter1" class="visually-hidden">Email address</label>
+                <input id="newsletter1" type="text" class="form-control" placeholder="Email">
+                <button class="btn btn-primary" type="button">Подписаться</button>
+            </div>
         </form>
-      </div>
     </div>
-
-    <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-      <p>© Copyright Anikienko Maxim.</p>
-      <ul class="list-unstyled d-flex">
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-        <li class="ms-3"><a class="link-dark" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-      </ul>
-    </div>
-  </footer>
 </div>
-</footer>
+
+<div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+    <p>© Copyright Anikienko Maxim.</p>
+    <ul class="list-unstyled d-flex">
+        <li class="ms-3"><a class="link-dark" href="#">
+                <svg class="bi" width="24" height="24">
+                    <use xlink:href="#twitter"></use>
+                </svg>
+            </a></li>
+        <li class="ms-3"><a class="link-dark" href="#">
+                <svg class="bi" width="24" height="24">
+                    <use xlink:href="#instagram"></use>
+                </svg>
+            </a></li>
+        <li class="ms-3"><a class="link-dark" href="#">
+                <svg class="bi" width="24" height="24">
+                    <use xlink:href="#facebook"></use>
+                </svg>
+            </a></li>
+    </ul>
+</div>
+{# тут были лишними footer тэги, они используются только один раз в родительском шаблоне#}

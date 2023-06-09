@@ -1,0 +1,5 @@
+<form action="{{ path('app_cart') }}" method="post">
+    <input type="hidden" name="_token" value="{{ csrf_token('app_cart') }}">
+    <input type="hidden" name="id" value="{{ product.id }}">
+    <button type="submit">Add to cart</button>
+</form>

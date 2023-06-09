@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    <div class="row justify-content-center">
+        <div class="col-6 mt-5 mb-5 p-5 bg-dark text-light rounded-2">
+            {{ form_start(registrationForm) }} {# открываем форму, чтобы можно было добавить потом кнопку#}
+            {{ form_rest(registrationForm) }} {# отображаем содержимое формы #}
+            <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+            {{ form_end(registrationForm) }} {# закрываем форму #}
+        </div>
+    </div>
+{% endblock %}
