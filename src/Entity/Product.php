@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProductRepository;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -14,12 +18,15 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['fav_product'])]
     private ?string $name = null;
 
     #[ORM\Column(type: 'text')]
+    #[Groups(['fav_product'])]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Groups(['fav_product'])]
     private ?int $price = null;
 
     #[ORM\Column(length:255, nullable: true)]
@@ -43,6 +50,15 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Category $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: FavoriteProduct::class)]
+    #[Ignore]
+    private Collection $favoriteProducts;
+
+    public function __construct()
+    {
+        $this->favoriteProducts = new ArrayCollection();
+    }
 
 
     public function setId(string $id): self
@@ -172,6 +188,36 @@ class Product
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, FavoriteProduct>
+     */
+    public function getFavoriteProducts(): Collection
+    {
+        return $this->favoriteProducts;
+    }
+
+    public function addFavoriteProduct(FavoriteProduct $favoriteProduct): self
+    {
+        if (!$this->favoriteProducts->contains($favoriteProduct)) {
+            $this->favoriteProducts->add($favoriteProduct);
+            $favoriteProduct->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavoriteProduct(FavoriteProduct $favoriteProduct): self
+    {
+        if ($this->favoriteProducts->removeElement($favoriteProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($favoriteProduct->getProduct() === $this) {
+                $favoriteProduct->setProduct(null);
+            }
+        }
 
         return $this;
     }

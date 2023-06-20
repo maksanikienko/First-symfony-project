@@ -24,9 +24,55 @@
         </div>
     </div>
 
+    <div id="favoriteContainer">
+
+    </div>
+
+            <script>
+            // Function to fetch and display the favorite products
+            
+        async function fetchAndDisplayFavorites() {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/favorite/list');
+            if (response.ok) {
+            const favorites = await response.json();
+            displayFavorites(favorites);
+            } else {
+            console.error('Failed to fetch favorites:', response.status, response.statusText);
+            }
+        } catch (error) {
+            console.error('Error fetching favorites:', error);
+        }
+        }
+
+        // Function to display the favorite products in the UI
+        
+        function displayFavorites(favorites) {
+        const favoritesContainer = document.getElementById('favoriteContainer');
+        favoritesContainer.innerHTML = '';
+
+        favorites.forEach((favorite) => {
+            let product = favorite.product;
+            let favoriteItem = document.createElement('div');
+            favoriteItem.className = 'favorite-item';
+            favoriteItem.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <p>Price: ${product.price}</p>
+            `;
+            favoritesContainer.appendChild(favoriteItem);
+        });
+        }
+
+        // Call the function to fetch and display favorites
+        fetchAndDisplayFavorites();
+        </script>
+        <button onclick="fetchAndDisplayFavorites()">Загрузить данные</button>
+
     <td>
     <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-outline-primary">Show</a>
     <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-outline-primary">Edit</a>
+    <a href="{{ path('favorite_add', {'productId': product.id}) }}" class="btn btn-outline-primary">Add to Favorite</a>
     </td>
 
 </div>
@@ -34,55 +80,6 @@
     </div>
         </div>
         
-
-
-
-
-{#
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>Price</th>
-                <th>Rating</th>
-                <th>Brand</th>
-                <th>Availability</th>
-                <th>Number</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.category.name ?? null }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.rating }}</td>
-                <td>{{ product.brand }}</td>
-                <td>{{ product.availability ? 'Yes' : 'No' }}</td>
-                <td>{{ product.number }}</td>
-                <td>{% if product.getImage() %}
-                <img src="{{ asset(imagesFolder~'/'~product.image) }}" alt="{{ product.name }}" height="100px">
-                {% endif %}</td>
-                <td>
-                    <a href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="10">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    #}
 
     <a href="{{ path('app_product_new') }}" class="btn btn-outline-primary">Create new</a>
 {% endblock %}
